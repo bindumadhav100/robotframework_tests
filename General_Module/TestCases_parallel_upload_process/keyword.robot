@@ -67,7 +67,7 @@ Library         cleanup_script.py
     Call Method    ${chrome_options}    add_argument    --no-sandbox
     Call Method    ${chromeOptions}    add_argument    --window-size\=1366,768
     Call Method    ${chromeOptions}    add_argument    --disable-gpu
-    Create Webdriver    Chrome    executable_path=/root/Desktop/Raft_docker/AI_ML_Test_Execution_Framework/ALICE/chromedriver      chrome_options=${chrome_options}  alias=BrowserInstance1
+    Create Webdriver    Chrome    executable_path=../TestCases_parallel_upload_process/chromedriver      chrome_options=${chrome_options}  alias=BrowserInstance1
 
 
     
