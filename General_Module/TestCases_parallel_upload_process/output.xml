@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.2 on win32)" generated="20220409 07:28:14.696" rpa="false" schemaversion="2">
+<suite id="s1" name="Alice" source="C:\Users\bmdesai\eclipse-workspace\AI_ML_Test_Execution_Framework\ALICE\General_Module\TestCases_parallel_upload_process\Alice.robot">
+<test id="s1-t1" name="TC-01: Verify Account Creation in Alice">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${result}</var>
+<arg>C:\\Users\\bmdesai\\eclipse-workspace\\AI_ML_Test_Execution_Framework\\ALICE\\General_Module\\TestCases_parallel_upload_process${/}Input_file1.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220409 07:28:15.846" level="INFO">${result} = {'Alice_Category': [{'appurl': 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/', 'username': 'testadmin', 'password': 'testadmin@12345', 'email': 'bindu.m_desai@nokia.com', 'en...</msg>
+<status status="PASS" starttime="20220409 07:28:15.842" endtime="20220409 07:28:15.846"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>@{value}</var>
+<arg>${result}</arg>
+<arg>$..Alice_Category</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20220409 07:28:15.879" level="INFO">@{value} = [ [{'appurl': 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/', 'username': 'testadmin', 'password': 'testadmin@12345', 'email': 'bindu.m_desai@nokia.com', 'enable': True, 'fil...</msg>
+<status status="PASS" starttime="20220409 07:28:15.847" endtime="20220409 07:28:15.879"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>@{value}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220409 07:28:15.882" level="INFO">Length is 1</msg>
+<msg timestamp="20220409 07:28:15.882" level="INFO">${length} = 1</msg>
+<status status="PASS" starttime="20220409 07:28:15.882" endtime="20220409 07:28:15.882"/>
+</kw>
+<for flavor="IN">
+<var>${val}</var>
+<value>@{value}</value>
+<iter>
+<var name="${val}">[{'appurl': 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/', 'username': 'testadmin', 'password': 'testadmin@12345', 'email': 'bindu.m_desai@nokia.com', 'enable': True, 'filen...</var>
+<kw name="Log" library="BuiltIn">
+<arg>${val}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220409 07:28:15.885" level="INFO">[{'appurl': 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/', 'username': 'testadmin', 'password': 'testadmin@12345', 'email': 'bindu.m_desai@nokia.com', 'enable': True, 'filename': 'SingleRan.zip', 'caseid': 'AG-101', 'group': 'Market Europe', 'productname': 'Single RAN', 'skipandrun': True, 'patterns': ['', '', ''], 'rules': ['', ''], 'tagname': 'TAG-001'}]</msg>
+<status status="PASS" starttime="20220409 07:28:15.885" endtime="20220409 07:28:15.885"/>
+</kw>
+<kw name=" looping over json object" library="keyword">
+<var>${i}</var>
+<arg>${val}</arg>
+<arg>${length}</arg>
+<doc>looping</doc>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>${length}</value>
+<iter>
+<var name="${i}">0</var>
+<kw name="Log" library="BuiltIn">
+<arg>${val}[${i}]</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220409 07:28:15.888" level="INFO">{'appurl': 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/', 'username': 'testadmin', 'password': 'testadmin@12345', 'email': 'bindu.m_desai@nokia.com', 'enable': True, 'filename': 'SingleRan.zip', 'caseid': 'AG-101', 'group': 'Market Europe', 'productname': 'Single RAN', 'skipandrun': True, 'patterns': ['', '', ''], 'rules': ['', ''], 'tagname': 'TAG-001'}</msg>
+<status status="PASS" starttime="20220409 07:28:15.888" endtime="20220409 07:28:15.888"/>
+</kw>
+<kw name=" Alice Upload Bundle Activities" library="keyword">
+<arg>${i}</arg>
+<arg>${val}</arg>
+<doc>looping</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${val[${i}]["appurl"]}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220409 07:28:15.891" level="INFO">Opening browser 'chrome' to base url 'https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/'.</msg>
+<msg timestamp="20220409 07:28:20.832" level="FAIL">WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=90.0.4430.72)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00BAC013+2474003]
+	Ordinal0 [0x00B429C1+2042305]
+	Ordinal0 [0x00A52F68+1060712]
+	Ordinal0 [0x00A4FD69+1047913]
+	Ordinal0 [0x00A45F09+1007369]
+	Ordinal0 [0x00A45C6F+1006703]
+	Ordinal0 [0x00A44258+1000024]
+	Ordinal0 [0x00A447E6+1001446]
+	Ordinal0 [0x00A5444D+1066061]
+	Ordinal0 [0x00AA5BBD+1399741]
+	Ordinal0 [0x00A96813+1337363]
+	Ordinal0 [0x00AA55CB+1398219]
+	Ordinal0 [0x00A966DB+1337051]
+	Ordinal0 [0x00A73427+1192999]
+	Ordinal0 [0x00A742EE+1196782]
+	Ordinal0 [0x00A74279+1196665]
+	GetHandleVerifier [0x00D396FC+1590332]
+	GetHandleVerifier [0x00DE8614+2306900]
+	GetHandleVerifier [0x00C39E93+543699]
+	GetHandleVerifier [0x00C392CE+540686]
+	Ordinal0 [0x00B486BA+2066106]
+	Ordinal0 [0x00B4D1C8+2085320]
+	Ordinal0 [0x00B4D308+2085640]
+	Ordinal0 [0x00B567F3+2123763]
+	BaseThreadInitThunk [0x75546359+25]
+	RtlGetAppContainerNamedObjectPath [0x77B487D4+228]
+	RtlGetAppContainerNamedObjectPath [0x77B487A4+180]
+</msg>
+<status status="FAIL" starttime="20220409 07:28:15.891" endtime="20220409 07:28:20.832"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Alice Application Url is opened in chrome browser</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.836" endtime="20220409 07:28:20.836"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.837" endtime="20220409 07:28:20.837"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${clickssologin}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.837" endtime="20220409 07:28:20.837"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${SSOLoginMessage}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.837" endtime="20220409 07:28:20.837"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Alice Authentication has been initated</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.837" endtime="20220409 07:28:20.837"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${inputEmailUrl}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.837" endtime="20220409 07:28:20.837"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${inputEmailUrl}</arg>
+<arg>${val[${i}]["email"]}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.843" endtime="20220409 07:28:20.843"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Alice Authenticate purpose Email given as input</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.844" endtime="20220409 07:28:20.844"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${emailClickButton}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.844" endtime="20220409 07:28:20.845"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${AccountVerificationMessage}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.845" endtime="20220409 07:28:20.845"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${uploadBundleClickButton}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.845" endtime="20220409 07:28:20.845"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${uploadBundleClickButton}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.845" endtime="20220409 07:28:20.845"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Result}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${FeedbackButtonClick}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.847" endtime="20220409 07:28:20.848"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${Result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.848" endtime="20220409 07:28:20.849"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Result}' == "True"</arg>
+<arg>Keyword1</arg>
+<arg>${i}</arg>
+<arg>${val}</arg>
+<arg>ELSE</arg>
+<arg>Keyword2</arg>
+<arg>${i}</arg>
+<arg>${val}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.850" endtime="20220409 07:28:20.850"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${caseClickElement}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.851" endtime="20220409 07:28:20.851"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${caseClickElement}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.851" endtime="20220409 07:28:20.851"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Case Id has been Initated in input</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.851" endtime="20220409 07:28:20.851"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${caseIdInput}</arg>
+<arg>${val[${i}]["caseid"]}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.851" endtime="20220409 07:28:20.851"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>case Id is ${val[${i}]["caseid"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.851" endtime="20220409 07:28:20.851"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${caseClickButton}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.856" endtime="20220409 07:28:20.856"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${caseClickButton}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.857" endtime="20220409 07:28:20.857"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Case Id input added done and clicked to proceed</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.858" endtime="20220409 07:28:20.859"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${groupRadioButtonClick}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.859" endtime="20220409 07:28:20.860"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.861" endtime="20220409 07:28:20.861"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Group Radio button is able to see but next will happen in next step</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.861" endtime="20220409 07:28:20.861"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//div[contains(text(),'${val[${i}]["group"]}')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.863" endtime="20220409 07:28:20.863"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Group for this log is ${val[${i}]["group"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.864" endtime="20220409 07:28:20.864"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.864" endtime="20220409 07:28:20.865"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${groupRadioButtonContinueClick}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.866" endtime="20220409 07:28:20.866"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Group has been submitted</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.866" endtime="20220409 07:28:20.866"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${radioButtonFlexiBscselect}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.869" endtime="20220409 07:28:20.869"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>product name is showing but next will happen in next step</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.870" endtime="20220409 07:28:20.871"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//div[contains(text(),'${val[${i}]["productname"]}')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.873" endtime="20220409 07:28:20.873"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Product name is ${val[${i}]["productname"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.874" endtime="20220409 07:28:20.874"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${skipandrulebuttonclick}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.875" endtime="20220409 07:28:20.875"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.877" endtime="20220409 07:28:20.877"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${skipandrulebuttonclick}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.878" endtime="20220409 07:28:20.879"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>click the Skip and Run Rules button</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.879" endtime="20220409 07:28:20.879"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${newTagnameenter}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.879" endtime="20220409 07:28:20.879"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.879" endtime="20220409 07:28:20.879"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Tagsubmit}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.884" endtime="20220409 07:28:20.885"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Tag Name Got submitted Done</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.885" endtime="20220409 07:28:20.886"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Upload progress is showing and click ok to accept the upload work in next step</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.887" endtime="20220409 07:28:20.887"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${popUpLoadingOkButton}</arg>
+<arg>${FileUploadingTimeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.889" endtime="20220409 07:28:20.889"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${popUpLoadingOkButton}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.890" endtime="20220409 07:28:20.890"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Ok button for Uploading Bundle Done</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.891" endtime="20220409 07:28:20.891"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${ClickViewAnalysysLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.891" endtime="20220409 07:28:20.892"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Click and Analysys Link is showing Click will happen in next step</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.892" endtime="20220409 07:28:20.892"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${ClickViewAnalysysLink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.893" endtime="20220409 07:28:20.893"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Click and Analysys Link Got Clicked</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.893" endtime="20220409 07:28:20.894"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${StatusButtonClick}</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.895" endtime="20220409 07:28:20.895"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Checking Status button</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.896" endtime="20220409 07:28:20.897"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${StatusButtonClick}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.897" endtime="20220409 07:28:20.897"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=(${OutputStatusStringCheck})</arg>
+<arg>${TimeoutSetup}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.897" endtime="20220409 07:28:20.897"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${item}</var>
+<value>${BundleStatusRange}</value>
+<iter>
+<var name="${item}">${item}</var>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${count}</var>
+<arg>${OutputStatusStringCheck}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.901" endtime="20220409 07:28:20.901"/>
+</kw>
+<kw name=" Get Final Bundle List" library="keyword">
+<var>${TotalStatus}</var>
+<arg>${count}</arg>
+<doc>Get Final Bundle List</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.902" endtime="20220409 07:28:20.903"/>
+</kw>
+<kw name=" final_bundle_value_compare" library="keyword">
+<var>${found}</var>
+<arg>${StaticList}</arg>
+<arg>${TotalStatus}</arg>
+<doc>This Keyword is used for compare to static bundle with Dynamic bundle value</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.905" endtime="20220409 07:28:20.905"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${found}</arg>
+<doc>Stops executing the enclosing for loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.906" endtime="20220409 07:28:20.907"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${TimeoutSetup}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.908" endtime="20220409 07:28:20.908"/>
+</kw>
+<status status="NOT RUN" starttime="20220409 07:28:20.900" endtime="20220409 07:28:20.909"/>
+</iter>
+<status status="NOT RUN" starttime="20220409 07:28:20.900" endtime="20220409 07:28:20.910"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${TotalStatus}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.912" endtime="20220409 07:28:20.913"/>
+</kw>
+<kw name="Clean Up Process" library="cleanup_script">
+<var>${clean}</var>
+<status status="NOT RUN" starttime="20220409 07:28:20.914" endtime="20220409 07:28:20.914"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${clean}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.916" endtime="20220409 07:28:20.917"/>
+</kw>
+<status status="FAIL" starttime="20220409 07:28:15.890" endtime="20220409 07:28:20.919"/>
+</kw>
+<status status="FAIL" starttime="20220409 07:28:15.888" endtime="20220409 07:28:20.920"/>
+</iter>
+<status status="FAIL" starttime="20220409 07:28:15.888" endtime="20220409 07:28:20.921"/>
+</for>
+<status status="FAIL" starttime="20220409 07:28:15.887" endtime="20220409 07:28:20.925"/>
+</kw>
+<status status="FAIL" starttime="20220409 07:28:15.885" endtime="20220409 07:28:20.926"/>
+</iter>
+<status status="FAIL" starttime="20220409 07:28:15.884" endtime="20220409 07:28:20.928"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>Successfully Complted All Process Like Rules Creation,Pattern Creation And ML With All Status</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220409 07:28:20.931" endtime="20220409 07:28:20.931"/>
+</kw>
+<doc>Open the Alice Application Account</doc>
+<tag>Test_Report</tag>
+<status status="FAIL" starttime="20220409 07:28:15.841" endtime="20220409 07:28:20.932">WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=90.0.4430.72)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00BAC013+2474003]
+	Ordinal0 [0x00B429C1+2042305]
+	Ordinal0 [0x00A52F68+1060712]
+	Ordinal0 [0x00A4FD69+1047913]
+	Ordinal0 [0x00A45F09+1007369]
+	Ordinal0 [0x00A45C6F+1006703]
+	Ordinal0 [0x00A44258+1000024]
+	Ordinal0 [0x00A447E6+1001446]
+	Ordinal0 [0x00A5444D+1066061]
+	Ordinal0 [0x00AA5BBD+1399741]
+	Ordinal0 [0x00A96813+1337363]
+	Ordinal0 [0x00AA55CB+1398219]
+	Ordinal0 [0x00A966DB+1337051]
+	Ordinal0 [0x00A73427+1192999]
+	Ordinal0 [0x00A742EE+1196782]
+	Ordinal0 [0x00A74279+1196665]
+	GetHandleVerifier [0x00D396FC+1590332]
+	GetHandleVerifier [0x00DE8614+2306900]
+	GetHandleVerifier [0x00C39E93+543699]
+	GetHandleVerifier [0x00C392CE+540686]
+	Ordinal0 [0x00B486BA+2066106]
+	Ordinal0 [0x00B4D1C8+2085320]
+	Ordinal0 [0x00B4D308+2085640]
+	Ordinal0 [0x00B567F3+2123763]
+	BaseThreadInitThunk [0x75546359+25]
+	RtlGetAppContainerNamedObjectPath [0x77B487D4+228]
+	RtlGetAppContainerNamedObjectPath [0x77B487A4+180]
+</status>
+</test>
+<status status="FAIL" starttime="20220409 07:28:14.788" endtime="20220409 07:28:20.953"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Test_Report</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Alice">Alice</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220409 07:28:15.834" level="ERROR">Error in file 'C:\Users\bmdesai\eclipse-workspace\AI_ML_Test_Execution_Framework\ALICE\General_Module\TestCases_parallel_upload_process\Alice.robot' on line 10: Importing library 'pabot.PabotLib' failed: ModuleNotFoundError: No module named 'pabot'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\bmdesai\eclipse-workspace\AI_ML_Test_Execution_Framework\ALICE\General_Module\TestCases_parallel_upload_process
+  C:\Program Files\Python310\python310.zip
+  C:\Program Files\Python310\DLLs
+  C:\Program Files\Python310\lib
+  C:\Program Files\Python310
+  C:\Users\bmdesai\AppData\Roaming\Python\Python310\site-packages
+  C:\Users\bmdesai\AppData\Roaming\Python\Python310\site-packages\win32
+  C:\Users\bmdesai\AppData\Roaming\Python\Python310\site-packages\win32\lib
+  C:\Users\bmdesai\AppData\Roaming\Python\Python310\site-packages\Pythonwin
+  C:\Program Files\Python310\lib\site-packages</msg>
+</errors>
+</robot>

@@ -1,0 +1,26 @@
+{
+  "Alice_Category": [
+    {
+      "appurl": "https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/",
+      "username": "",
+      "password": "",
+      "email": "bindu.m_desai@nokia.com",
+      "enable": true,
+      "filename": "SingleRan.zip",
+      "caseid": "AG-102",
+      "group": "Market Europe",
+      "productname": "Single RAN",
+      "skipandrun": true,
+      "patterns": [
+        "",
+        "",
+        ""
+      ],
+      "rules": [
+        "",
+        ""
+      ],
+      "tagname": "TAG-002"
+    }
+   ]
+  }  

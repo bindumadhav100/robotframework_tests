@@ -1,0 +1,91 @@
+{
+  "Alice_Category": [
+    {
+      "appurl": "https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/",
+      "username": "",
+      "password": "",
+      "email": "bindu.m_desai@nokia.com",
+      "enable": true,
+      "filename": "FlexiBSC_220MB.zip",
+      "caseid": "AG-101",
+      "group": "Market India",
+      "productname": "Flexi BSC",
+      "skipandrun": true,
+      "patterns": [
+        "",
+        "",
+        ""
+      ],
+      "rules": [
+        "",
+        ""
+      ],
+      "tagname": "TAG-001"
+    },
+    {
+      "appurl": "https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/",
+      "username": "",
+      "password": "",
+      "email": "bindu.m_desai@nokia.com",
+      "enable": true,
+      "filename": "FlexiBSC_220MB.zip",
+      "caseid": "AG-101",
+      "group": "Market India",
+      "productname": "Flexi BSC",
+      "skipandrun": true,
+      "patterns": [
+        "",
+        "",
+        ""
+      ],
+      "rules": [
+        "",
+        ""
+      ],
+      "tagname": "TAG-001"
+    },{
+      "appurl": "https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/",
+      "username": "",
+      "password": "",
+      "email": "bindu.m_desai@nokia.com",
+      "enable": true,
+      "filename": "FlexiBSC_220MB.zip",
+      "caseid": "AG-101",
+      "group": "Market India",
+      "productname": "Flexi BSC",
+      "skipandrun": true,
+      "patterns": [
+        "",
+        "",
+        ""
+      ],
+      "rules": [
+        "",
+        ""
+      ],
+      "tagname": "TAG-001"
+    },
+    {
+      "appurl": "https://alice-test-validation-staging.americas.abi.dyn.nesc.nokia.net/",
+      "username": "",
+      "password": "",
+      "email": "bindu.m_desai@nokia.com",
+      "enable": true,
+      "filename": "FlexiBSC_220MB.zip",
+      "caseid": "AG-101",
+      "group": "Market India",
+      "productname": "Flexi BSC",
+      "skipandrun": true,
+      "patterns": [
+        "",
+        "",
+        ""
+      ],
+      "rules": [
+        "",
+        ""
+      ],
+      "tagname": "TAG-001"
+    }
+  ]
+}
